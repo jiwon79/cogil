@@ -16,7 +16,14 @@ const routes: Array<RouteRecordRaw> = [
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/AboutView.vue"),
   },
+  {
+    path: "/:category",
+    name: "category",
+    component: TestView,
+  }
 ];
+
+import TestView from "../views/TestView.vue";
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
