@@ -1,15 +1,17 @@
 <template>
-  <div class="home">
-    <carouselCompo> </carouselCompo>
-  </div>
+    <MainHeader title="LOGO" is-logo="true"/>
+    <carouselCompo/>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import MainHeader from "@/components/MainHeader.vue";
 import carouselCompo from "../components/carouselCompo.vue";
+
 export default defineComponent({
   name: "HomeView",
   components: {
+    MainHeader,
     carouselCompo,
   },
 });
