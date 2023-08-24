@@ -11,13 +11,54 @@
   >
     <!-- @scroll="infiniteScroll"
     @transitionend="transitionEnd" -->
-    <button @click="prevItem">Previous</button>
     <div class="carousel-track" ref="carouselTrack">
-      <div v-for="i in this.cardNum" :key="i" class="carousel-item">
+      <div
+        v-for="i in this.cardNum"
+        :key="i"
+        class="carousel-item"
+        :class="{ carouselCenter: i == nwItem }"
+      >
         Item {{ i }}
       </div>
     </div>
-    <button @click="nextItem">Next</button>
+  </div>
+  <div class="indicator">
+    <button @click="prevItem">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="12"
+        height="20"
+        viewBox="0 0 12 20"
+        fill="none"
+      >
+        <path
+          d="M11.92 1.77L10.15 0L0.25 9.9L10.15 19.8L11.92 18.03L3.79 9.9L11.92 1.77Z"
+          fill="#494C50"
+        />
+      </svg>
+    </button>
+    <div
+      v-for="i in this.cardNum"
+      :key="i"
+      class="indicator-item"
+      :class="{ nwIndicator: i == nwItem }"
+    >
+      i
+    </div>
+    <button @click="nextItem">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="13"
+        height="20"
+        viewBox="0 0 13 20"
+        fill="none"
+      >
+        <path
+          d="M0 2.12L7.88 10L0 17.88L2.12 20L12.12 10L2.12 0L0 2.12Z"
+          fill="#494C50"
+        />
+      </svg>
+    </button>
   </div>
   <div>
     <div>{{ nwItem }}</div>
@@ -37,33 +78,11 @@ export default {
       itemWidth: 200, // 예제에서는 아이템 너비가 200px로 설정되었습니다.
       useWidth: 200 + 20,
       positionDiff: 0,
-      cardNum: 5,
+      cardNum: 7,
       isButtonSliding: false,
       nwItem: 2,
     };
   },
-  // computed: {
-  //   nwItem() {
-  //     if (this.$refs.carouselTrack) {
-  //       if (
-  //         this.$refs.carouselTrack.scrollLeft % this.useWidth >
-  //         this.useWidth / 2
-  //       ) {
-  //         return (
-  //           (parseInt(this.$refs.carouselTrack.scrollLeft / this.useWidth) +
-  //             1) %
-  //           this.cardNum
-  //         );
-  //       } else {
-  //         return (
-  //           parseInt(this.$refs.carouselTrack.scrollLeft / this.useWidth) %
-  //           this.cardNum
-  //         );
-  //       }
-  //     }
-  //     return 0;
-  //   },
-  // },
   mounted() {
     let carouselChildren = [...this.$refs.carouselTrack.children];
     carouselChildren.reverse().forEach((card) => {
@@ -176,7 +195,7 @@ export default {
   justify-content: center;
   overflow: hidden;
   position: relative;
-  width: 1200px; /* 아이템 너비에 맞게 설정 */
+  /* width: 1200px; */
 }
 .carousel-track {
   width: 660px;
@@ -187,6 +206,19 @@ export default {
 }
 .carousel-track.no-transition {
   scroll-behavior: auto;
+}
+.indicator {
+  display: flex;
+  align-items: center;
+}
+.indicator-item {
+  width: 12px;
+  height: 12px;
+  border-radius: 6px;
+  background-color: #d1d6dc;
+}
+.nwIndicator {
+  background-color: #ff7781;
 }
 .carousel-track.dragging {
   cursor: grab;
@@ -202,6 +234,10 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.carouselCenter {
+  width: 250px;
+  height: 200px;
 }
 .container {
   overflow-x: auto;
