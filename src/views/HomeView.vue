@@ -23,7 +23,6 @@ export default defineComponent({
   components: {
     carouselCompo,
     MainHeader,
-    carouselCompo,
   },
 });
 </script>
