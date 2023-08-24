@@ -1,46 +1,56 @@
 <template>
     <div class = "custom-detail">
-        <div class = "custom-subtitle">{{ "요약" }}</div>
-        <div class = "custom-content">{{ getMessage() }}</div>
+        <test-component/>
+        <component :is="testComponent"></component>
+        <!-- <div class = "custom-subtitle">{{ getSubtitle() }}</div>
+        <div class = "custom-content">{{ getContent() }}</div>
         <div class = "custom-youtube">
             <div class = "text-box">
-                <div class = "youtube-title"> How I make science animation </div>
-                <div class = "youtube-description"> To try everything blablablabla </div>
+                <div class = "youtube-title">{{ getYoutubeTitle() }} </div>
+                <div class = "youtube-description"> {{ getDescription() }} </div>
+                <div> {{ getTestComponent() }}</div>
             </div>
             <div class = "thumbnail-box">
-                
+                {{ getYoutubeThumbnail() }}
             </div>
-        </div>
+        </div> -->
+
     </div>
 </template>
 
 <script>
+import TestComponent from '../components/testComponent.vue';
+import {subtitleCollection} from '../store/subtitle.js';
+import {contentCollection} from '../store/content.js';
+import { descriptionCollection } from '../store/description.js';
+import { thumbnailCollection } from '../store/thumbnail.js';
+import { youtubetitleCollection } from '../store/youtubetitle.js';
+
 export default {
+    components:{
+        TestComponent
+    },
     props: ['index'],
     methods: {
-        getMessage() {
-            switch (this.index) {
-                case 0:
-                    return '이렇다';
-                case 1:
-                    return '값 2에 대한 메시지';
-                case 2:
-                    return '값 3에 대한 메시지';
-                case 3:
-                    return '값 4에 대한 메시지';
-                default:
-                    return '기본 메시지';
-            }
+        getContent() {
+            return contentCollection[this.index];
         },
-        getVideo() {
-            switch (this.index) {
-                case 0:
-                    return 1;
-                case 1:
-                    return 2;
-                case 2:
-                    return 3;
-            }
+        getSubtitle() {
+            return subtitleCollection[this.index];
+        },
+        getDescription() {
+            return descriptionCollection[this.index];
+        },
+        getThumbnail() {
+            return thumbnailCollection[this.index];
+        },
+        getYoutubeTitle() {
+            return youtubetitleCollection[this.index];
+        },
+    },
+    computed: {
+        testComponent() {
+            return TestComponent;
         }
     }
 };
