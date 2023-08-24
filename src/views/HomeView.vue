@@ -1,18 +1,35 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App" />
-  </div>
+    <MainHeader title="LOGO" is-logo="true"/>
+    <carouselCompo/>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import HelloWorld from "@/components/HelloWorld.vue"; // @ is an alias to /src
+import MainHeader from "@/components/MainHeader.vue";
+import carouselCompo from "../components/carouselCompo.vue";
 
 export default defineComponent({
   name: "HomeView",
   components: {
-    HelloWorld,
+    MainHeader,
+    carouselCompo,
   },
 });
 </script>
+
+<style scoped lang="scss">
+h3 {
+  margin: 40px 0 0;
+}
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+li {
+  display: inline-block;
+  margin: 0 10px;
+}
+a {
+  color: #42b983;
+}
+</style>
