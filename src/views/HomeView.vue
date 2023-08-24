@@ -1,4 +1,5 @@
 <template>
+  <MainHeader title="LOGO" is-logo="true"/>
   <div class="home">
     <div class="home-content-container">
       <div class="home-content">
@@ -7,17 +8,21 @@
       </div>
     </div>
     <div class="carousel-container">
-      <carouselCompo> </carouselCompo>
+      <carouselCompo/>
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import MainHeader from "@/components/MainHeader.vue";
 import carouselCompo from "../components/carouselCompo.vue";
+
 export default defineComponent({
   name: "HomeView",
   components: {
+    carouselCompo,
+    MainHeader,
     carouselCompo,
   },
 });
