@@ -1,7 +1,6 @@
 <template>
     <div ref="element" class="carousel-item" :class="{ active }">
         <p class="title">{{ title }}</p>
-        <p>{{ active }}</p>
     </div>
 </template>
 
