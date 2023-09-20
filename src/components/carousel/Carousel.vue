@@ -1,59 +1,35 @@
 <template>
     <div
-            class="carousel"
-            @mousedown="startDrag"
-            @touchstart="startDrag"
-            @mousemove="onDrag"
-            @touchmove="onDrag"
-            @mouseup="stopDrag"
-            @mouseleave="stopDrag"
-            @touchend="stopDrag"
+        class="carousel"
+        @mousedown="startDrag"
+        @touchstart="startDrag"
+        @mousemove="onDrag"
+        @touchmove="onDrag"
+        @mouseup="stopDrag"
+        @mouseleave="stopDrag"
+        @touchend="stopDrag"
     >
         <div class="carousel-track" ref="carouselTrack">
             <CarouselItem
-                    v-for="i in this.cardNum * 3"
-                    :key="`${i}-${selectedIndex}`"
-                    :title="(i % this.cardNum).toString()"
-                    v-bind:active="(i % this.cardNum) === (this.selectedIndex % this.cardNum)"
-            />
+                v-for="i in this.cardNum * 3"
+                :key="`${i}-${selectedIndex}`"
+                :title="(i % this.cardNum).toString()"
+                v-bind:active="(i % this.cardNum) === (this.selectedIndex % this.cardNum)"/>
         </div>
     </div>
     <div class="indicator">
         <button @click="prevItem">
-            <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="12"
-                    height="20"
-                    viewBox="0 0 12 20"
-                    fill="none"
-            >
-                <path
-                        d="M11.92 1.77L10.15 0L0.25 9.9L10.15 19.8L11.92 18.03L3.79 9.9L11.92 1.77Z"
-                        fill="#494C50"
-                />
-            </svg>
+            <img src="/icons/ic_arrow_prev.svg" alt="prev button">
         </button>
         <div
-                v-for="i in this.cardNum"
-                :key="i"
-                class="indicator-item"
-                :class="{ nwIndicator: i === selectedIndex }"
-        >
+            v-for="i in this.cardNum"
+            :key="i"
+            class="indicator-item"
+            :class="{ nwIndicator: i === selectedIndex }">
             i
         </div>
         <button @click="nextItem">
-            <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="13"
-                    height="20"
-                    viewBox="0 0 13 20"
-                    fill="none"
-            >
-                <path
-                        d="M0 2.12L7.88 10L0 17.88L2.12 20L12.12 10L2.12 0L0 2.12Z"
-                        fill="#494C50"
-                />
-            </svg>
+            <img src="/icons/ic_arrow_next.svg" alt="next button">
         </button>
     </div>
     <div>

@@ -8,9 +8,9 @@
             </div>
         </div>
         <div class="carousel-container">
-            <carouselCompo
-                    :selected-index="selectedIndex"
-                    :set-selected-index="setSelectedIndex"
+            <Carousel
+                :selected-index="selectedIndex"
+                :set-selected-index="setSelectedIndex"
             />
         </div>
     </div>
@@ -19,12 +19,12 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import MainHeader from "@/components/MainHeader.vue";
-import carouselCompo from "../components/carouselCompo.vue";
+import Carousel from "@/components/carousel/Carousel.vue";
 
 export default defineComponent({
   name: "HomeView",
   components: {
-    carouselCompo,
+    Carousel,
     MainHeader,
   },
   data() {
@@ -34,7 +34,6 @@ export default defineComponent({
   },
   methods: {
     setSelectedIndex(index: number) {
-      console.log('setSelectedIndex ', this.selectedIndex, index);
       this.selectedIndex = index;
     },
   },

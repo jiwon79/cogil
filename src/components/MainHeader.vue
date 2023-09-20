@@ -1,7 +1,7 @@
 <template>
     <header v-if="!isLogo">
         <button @click="back">
-            <img src="../assets/ic_arrow_back.svg" alt="back button">
+            <img src="/icons/ic_arrow_prev.svg" alt="back button">
         </button>
         <p>{{ title }}</p>
     </header>
