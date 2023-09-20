@@ -17,33 +17,19 @@
                 v-bind:active="(i % this.cardNum) === (this.selectedIndex % this.cardNum)"/>
         </div>
     </div>
-    <div class="indicator">
-        <button @click="prevItem">
-            <img src="/icons/ic_arrow_prev.svg" alt="prev button">
-        </button>
-        <div
-            v-for="i in this.cardNum"
-            :key="i"
-            class="indicator-item"
-            :class="{ nwIndicator: i === selectedIndex }">
-            i
-        </div>
-        <button @click="nextItem">
-            <img src="/icons/ic_arrow_next.svg" alt="next button">
-        </button>
-    </div>
-    <div>
-        <div>{{ selectedIndex }}</div>
-        <div ref="container" class="container">슬라이드 될 내용</div>
-        <button @click="slide">Slide</button>
-    </div>
+    <CarouselIndicator
+        :selectedIndex="selectedIndex"
+        :indicatorCount="cardNum"
+        :setPrevIndex="prevItem"
+        :setNextIndex="nextItem"/>
 </template>
 
 <script>
-import CarouselItem from "@/components/carousel/CarouselItem.vue";
+import CarouselItem from "./CarouselItem.vue";
+import CarouselIndicator from "./CarouselIndicator.vue";
 
 export default {
-  components: {CarouselItem},
+  components: {CarouselIndicator, CarouselItem},
   props: {
     selectedIndex: {
       type: Number,
@@ -68,6 +54,7 @@ export default {
     };
   },
   mounted() {
+    this.$refs.carouselTrack.scrollLeft = this.useWidth * this.cardNum;
     this.$refs.carouselTrack.addEventListener("scroll", this.infiniteScroll);
     this.$refs.carouselTrack.addEventListener("transitionend", () => {
       console.log("end");
@@ -82,12 +69,12 @@ export default {
       // this.isButtonSliding = false;
     },
     prevItem() {
-      var temp =
+      const scrollLeft =
         parseInt(this.$refs.carouselTrack.scrollLeft / this.useWidth) *
         this.useWidth -
         this.useWidth;
-      this.$refs.carouselTrack.scrollLeft = temp;
-      this.getNwItem(temp);
+      this.$refs.carouselTrack.scrollLeft = scrollLeft;
+      this.setSelectedIndexByScrollLeft(scrollLeft);
     },
     nextItem() {
       var temp =
@@ -95,7 +82,7 @@ export default {
         this.useWidth +
         this.useWidth;
       this.$refs.carouselTrack.scrollLeft = temp;
-      this.getNwItem(temp);
+      this.setSelectedIndexByScrollLeft(temp);
     },
     startDrag(e) {
       this.isDragging = true;
@@ -109,7 +96,7 @@ export default {
       this.$refs.carouselTrack.scrollLeft =
         this.prevScrollLeft - this.positionDiff;
       this.$refs.carouselTrack.classList.add("dragging");
-      this.getNwItem(this.$refs.carouselTrack.scrollLeft);
+      this.setSelectedIndexByScrollLeft(this.$refs.carouselTrack.scrollLeft);
     },
     stopDrag() {
       this.isDragging = false;
@@ -150,7 +137,7 @@ export default {
         this.$refs.carouselTrack.classList.remove("no-transition");
       }
     },
-    getNwItem(scrollL) {
+    setSelectedIndexByScrollLeft(scrollL) {
       if (scrollL % this.useWidth > this.useWidth / 2) {
         const newSelectedIndex =
           ((parseInt(scrollL / this.useWidth) + 1 + 1) % this.cardNum) + 1;
@@ -187,30 +174,9 @@ export default {
     scroll-behavior: auto;
 }
 
-.indicator {
-    display: flex;
-    align-items: center;
-}
-
-.indicator-item {
-    width: 12px;
-    height: 12px;
-    border-radius: 6px;
-    background-color: #d1d6dc;
-}
-
-.nwIndicator {
-    background-color: #ff7781;
-}
-
 .carousel-track.dragging {
     cursor: grab;
     scroll-behavior: auto;
     pointer-events: none;
-}
-
-.container {
-    overflow-x: auto;
-    white-space: nowrap;
 }
 </style>
