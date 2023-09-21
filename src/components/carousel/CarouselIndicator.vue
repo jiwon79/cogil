@@ -5,7 +5,7 @@
         </button>
         <div class="indicator-wrap">
             <div
-                v-for="i in 4"
+                v-for="i in indicatorCount"
                 :key="i"
                 class="indicator-item"
                 :class="{ active: i === selectedIndex }"/>

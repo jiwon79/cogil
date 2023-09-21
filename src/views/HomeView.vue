@@ -7,6 +7,7 @@
                 <div>내용 냉용 냉용ㅇㅇ 냉용ㅇ우어</div>
             </div>
         </div>
+        <CarouselPreview :selectedIndex="selectedIndex"/>
         <div class="carousel-container">
             <Carousel
                 :selected-index="selectedIndex"
@@ -20,10 +21,12 @@
 import { defineComponent } from "vue";
 import MainHeader from "@/components/MainHeader.vue";
 import Carousel from "@/components/carousel/Carousel.vue";
+import CarouselPreview from "@/components/carousel/CarouselPreview.vue";
 
 export default defineComponent({
   name: "HomeView",
   components: {
+      CarouselPreview,
     Carousel,
     MainHeader,
   },

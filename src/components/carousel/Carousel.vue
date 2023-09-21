@@ -11,15 +11,15 @@
     >
         <div class="carousel-track" ref="carouselTrack">
             <CarouselItem
-                v-for="i in this.cardNum * 3"
+                v-for="i in this.totalCount * 3"
                 :key="`${i}-${selectedIndex}`"
-                :title="(i % this.cardNum).toString()"
-                v-bind:active="(i % this.cardNum) === (this.selectedIndex % this.cardNum)"/>
+                :title="homeCarouselList[(i % this.totalCount)].title"
+                v-bind:active="(i % this.totalCount) === (this.selectedIndex % this.totalCount)"/>
         </div>
     </div>
     <CarouselIndicator
         :selectedIndex="selectedIndex"
-        :indicatorCount="cardNum"
+        :indicatorCount="totalCount"
         :setPrevIndex="prevItem"
         :setNextIndex="nextItem"/>
 </template>
@@ -27,6 +27,7 @@
 <script>
 import CarouselItem from "./CarouselItem.vue";
 import CarouselIndicator from "./CarouselIndicator.vue";
+import homeCarouselList from "./list";
 
 export default {
   components: {CarouselIndicator, CarouselItem},
@@ -49,12 +50,13 @@ export default {
       itemWidth: 200,
       useWidth: 200 + 20,
       positionDiff: 0,
-      cardNum: 4,
+      homeCarouselList,
+      totalCount: homeCarouselList.length,
       isButtonSliding: false,
     };
   },
   mounted() {
-    this.$refs.carouselTrack.scrollLeft = this.useWidth * this.cardNum;
+    this.$refs.carouselTrack.scrollLeft = this.useWidth * this.totalCount;
     this.$refs.carouselTrack.addEventListener("scroll", this.infiniteScroll);
     this.$refs.carouselTrack.addEventListener("transitionend", () => {
       console.log("end");
@@ -122,8 +124,8 @@ export default {
         this.$refs.carouselTrack.classList.add("no-transition");
         this.$refs.carouselTrack.scrollLeft =
           this.$refs.carouselTrack.scrollWidth -
-          2 * this.useWidth * this.cardNum;
-        this.prevPageX += this.useWidth * this.cardNum;
+          2 * this.useWidth * this.totalCount;
+        this.prevPageX += this.useWidth * this.totalCount;
 
         this.$refs.carouselTrack.classList.remove("no-transition");
       } else if (
@@ -132,19 +134,19 @@ export default {
         this.$refs.carouselTrack.offsetWidth
       ) {
         this.$refs.carouselTrack.classList.add("no-transition");
-        this.$refs.carouselTrack.scrollLeft = this.useWidth * this.cardNum;
-        this.prevPageX -= this.useWidth * this.cardNum;
+        this.$refs.carouselTrack.scrollLeft = this.useWidth * this.totalCount;
+        this.prevPageX -= this.useWidth * this.totalCount;
         this.$refs.carouselTrack.classList.remove("no-transition");
       }
     },
     setSelectedIndexByScrollLeft(scrollL) {
       if (scrollL % this.useWidth > this.useWidth / 2) {
         const newSelectedIndex =
-          ((parseInt(scrollL / this.useWidth) + 1 + 1) % this.cardNum) + 1;
+          ((parseInt(scrollL / this.useWidth) + 1 + 1) % this.totalCount) + 1;
         this.setSelectedIndex(newSelectedIndex);
       } else {
         const newSelectedIndex =
-          (parseInt(scrollL / this.useWidth + 1) % this.cardNum) + 1;
+          (parseInt(scrollL / this.useWidth + 1) % this.totalCount) + 1;
         this.setSelectedIndex(newSelectedIndex);
       }
     },
