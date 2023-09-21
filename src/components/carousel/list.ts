@@ -4,6 +4,7 @@ import { DefineComponent } from "vue";
 export interface HomeCarousel {
   id: number;
   title: string;
+  name: string;
   preview: DefineComponent | string;
 }
 
@@ -16,21 +17,25 @@ const homeCarouselList: HomeCarousel[] = [
   {
     id: 1,
     title: "WEB",
+    name: "web",
     preview: WebPreview as DefineComponent,
   },
   {
     id: 2,
     title: "APP",
+    name: "app",
     preview: AppPreview as DefineComponent,
   },
   {
     id: 3,
     title: "GAME",
+    name: "game",
     preview: GamePreview as DefineComponent,
   },
   {
     id: 4,
     title: "SERVER",
+    name: "server",
     preview: ServerPreview as DefineComponent,
   }
 ];

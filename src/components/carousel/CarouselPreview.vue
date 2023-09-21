@@ -1,11 +1,9 @@
 <template>
     <div class="container">
         <div class="content">
-            <component :is="currentPreview as any"></component>
+            <component :is="currentItem.preview as any"></component>
         </div>
-        <button class="button">
-            보러가기
-        </button>
+        <a class="link" :href="link">보러가기</a>
     </div>
 </template>
 
@@ -18,7 +16,9 @@ const props = defineProps<{
 }>();
 
 const currentIndex = computed(() => props.selectedIndex % homeCarouselList.length);
-const currentPreview = computed(() => homeCarouselList[currentIndex.value].preview);
+const currentItem = computed(() => homeCarouselList[currentIndex.value]);
+const link = computed(() => `/${currentItem.value.name}`);
+
 </script>
 
 <style scoped lang="scss">
@@ -40,7 +40,7 @@ const currentPreview = computed(() => homeCarouselList[currentIndex.value].previ
     box-shadow: 2px 4px 12px 0 rgba(0, 0, 0, 0.1);
 }
 
-.button {
+.link {
     @include Label-14;
 
     align-self: end;
@@ -50,5 +50,6 @@ const currentPreview = computed(() => homeCarouselList[currentIndex.value].previ
     align-items: center;
     border-radius: 100px;
     border: 1px solid $grey650;
+    color: $grey650;
 }
 </style>
