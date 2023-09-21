@@ -1,6 +1,11 @@
 <template>
     <div class="container">
-        <component :is="currentPreview as any"></component>
+        <div class="content">
+            <component :is="currentPreview as any"></component>
+        </div>
+        <button class="button">
+            보러가기
+        </button>
     </div>
 </template>
 
@@ -33,5 +38,17 @@ const currentPreview = computed(() => homeCarouselList[currentIndex.value].previ
     border: 8px solid $grey100;
     background: rgba(255, 234, 236, 0.6);
     box-shadow: 2px 4px 12px 0 rgba(0, 0, 0, 0.1);
+}
+
+.button {
+    @include Label-14;
+
+    align-self: end;
+    display: flex;
+    padding: 8px 12px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100px;
+    border: 1px solid $grey650;
 }
 </style>
