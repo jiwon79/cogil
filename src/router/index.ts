@@ -19,11 +19,11 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: "/:category",
     name: "category",
-    component: TestView,
+    component: DetailView,
   }
 ];
 
-import TestView from "../views/TestView.vue";
+import DetailView from "../views/DetailView.vue";
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),

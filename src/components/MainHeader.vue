@@ -1,9 +1,10 @@
 <template>
     <header v-if="!isLogo" class="header">
-        <button @click="back">
+        <button @click="back" class="button button-size">
             <img src="/icons/ic_arrow_prev.svg" alt="back button">
         </button>
         <p>{{ title }}</p>
+        <div class="button-size"></div>
     </header>
     <header v-if="isLogo" class="header header-logo">
         <p>COGIL</p>
@@ -39,26 +40,19 @@ export default defineComponent({
 .header {
     display: flex;
     height: 52px;
+    padding: 0 18px;
+    justify-content: space-between;
+    align-items: center;
+    @include Heading-24;
 }
 
 .header-logo {
-    @include Heading-24;
     justify-content: center;
-    align-items: center;
 }
 
-.header {
-    display: flex;
-}
-
-button {
-    background: none;
-    border: none;
-    cursor: pointer;
-}
-
-img {
+.button-size {
     width: 24px;
     height: 24px;
 }
+
 </style>
