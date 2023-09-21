@@ -1,0 +1,95 @@
+$main100: #FFEAEC;
+$main200: #FFC9CD;
+
+$grey100: #FFFFFF;
+$grey200: #F1F3F5;
+$grey250: #E3E6EB;
+$grey300: #D5D9DE;
+$grey350: #D1D6DC;
+$grey400: #AFB4BC;
+$grey500: #92959B;
+$grey600: #73767B;
+$grey650: #494C50;
+$grey700: #3A3D41;
+$grey800: #1D1E1F;
+
+:export {
+  main100: $main100;
+  main200: $main200;
+
+  grey100: $grey100;
+  grey200: $grey200;
+  grey250: $grey250;
+  grey300: $grey300;
+  grey350: $grey350;
+  grey400: $grey400;
+  grey500: $grey500;
+  grey600: $grey600;
+  grey650: $grey650;
+  grey700: $grey700;
+  grey800: $grey800;
+}
+
+@mixin Heading-28 {
+  font-family: Pretendard, sans-serif;
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 36px; /* 128.571% */
+}
+
+@mixin Heading-24 {
+  font-family: Pretendard, sans-serif;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 32px; /* 133.333% */
+}
+
+@mixin Heading-20 {
+  font-family: Pretendard, sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 28px; /* 140% */
+}
+
+@mixin Paragraph-18 {
+  font-family: Pretendard, sans-serif;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 28px; /* 155.556% */
+}
+
+@mixin Paragraph-14 {
+  font-family: Pretendard, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px; /* 142.857% */
+}
+
+@mixin Paragraph-12 {
+  font-family: Pretendard, sans-serif;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px; /* 166.667% */
+}
+
+@mixin Paragraph-10 {
+  font-family: Pretendard, sans-serif;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 16px; /* 160% */
+}
+
+@mixin Label-14 {
+  font-family: Pretendard, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 16px; /* 114.286% */
+}
