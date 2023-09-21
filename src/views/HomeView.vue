@@ -41,12 +41,13 @@ export default defineComponent({
 @import "src/components/styleGuide.scss";
 
 .home {
+    display: flex;
+    flex-direction: column;
     background-color: $grey200;
-
+    flex: 1;
 }
 .carousel-container {
   display: flex;
-  margin-top: 40px;
   flex-direction: column;
   align-items: center;
 }

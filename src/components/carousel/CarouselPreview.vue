@@ -16,19 +16,18 @@ const currentIndex = computed(() => props.selectedIndex % homeCarouselList.lengt
 const currentPreview = computed(() => homeCarouselList[currentIndex.value].preview);
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 @import "../styleGuide.scss";
 
 .container {
     display: flex;
-    width: 255px;
-    height: 530px;
+    flex: 1;
+    box-sizing: border-box;
+    margin: 20px 40px 40px 40px;
     padding: 20px 24px;
-    margin: auto;
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-start;
-    flex: 1 0 0;
 
     border-radius: 20px;
     border: 8px solid $grey100;

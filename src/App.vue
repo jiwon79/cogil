@@ -11,14 +11,19 @@
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
     background-color: $grey200;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 html {
     width: 100vw;
+    height: 100%;
 }
 
 body {
     margin: 0 auto;
     max-width: 390px;
+    height: 100%;
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-    <div class="indicator">
+    <div class="container">
         <button @click="setPrevIndex" class="button">
             <img src="/icons/ic_arrow_prev.svg" alt="prev button">
         </button>
@@ -42,18 +42,19 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
+.container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 20px 0 30px 0;
+}
+
 .button {
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 4px;
-}
-
-.indicator {
-    display: flex;
-    align-items: center;
-    gap: 8px;
 }
 
 .indicator-wrap {
