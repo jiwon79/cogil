@@ -35,7 +35,6 @@ export default {
     height: 844px;
     flex-direction: column;
     align-items: flex-start;
-    background: var(--grey-200, #F1F3F5);
 }
 
 .header {
@@ -56,7 +55,6 @@ export default {
 }
 
 .header-text {
-    color: var(--grey-800, #1D1E1F);
     /* Heading/24 */
     font-family: Pretendard;
     font-size: 24px;
