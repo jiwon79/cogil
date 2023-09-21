@@ -1,37 +1,37 @@
 <template>
     <div
-        class="carousel"
-        @mousedown="startDrag"
-        @touchstart="startDrag"
-        @mousemove="onDrag"
-        @touchmove="onDrag"
-        @mouseup="stopDrag"
-        @mouseleave="stopDrag"
-        @touchend="stopDrag"
+            class="carousel"
+            @mousedown="startDrag"
+            @touchstart="startDrag"
+            @mousemove="onDrag"
+            @touchmove="onDrag"
+            @mouseup="stopDrag"
+            @mouseleave="stopDrag"
+            @touchend="stopDrag"
     >
         <div class="carousel-track" ref="carouselTrack">
             <CarouselItem
-                v-for="i in this.totalCount"
-                :key="`${i}-${selectedIndex}-1`"
-                :title="homeCarouselList[i % homeCarouselList.length].title"
-                v-bind:active="i === this.selectedIndex"/>
+                    v-for="i in this.totalCount"
+                    :key="`${i}-${selectedIndex}-1`"
+                    :title="homeCarouselList[i % homeCarouselList.length].title"
+                    v-bind:active="i === this.selectedIndex"/>
             <CarouselItem
-                v-for="i in this.totalCount"
-                :key="`${i}-${selectedIndex}-2`"
-                :title="homeCarouselList[i % homeCarouselList.length].title"
-                v-bind:active="i === this.selectedIndex"/>
+                    v-for="i in this.totalCount"
+                    :key="`${i}-${selectedIndex}-2`"
+                    :title="homeCarouselList[i % homeCarouselList.length].title"
+                    v-bind:active="i === this.selectedIndex"/>
             <CarouselItem
-                v-for="i in this.totalCount"
-                :key="`${i}-${selectedIndex}-3`"
-                :title="homeCarouselList[i % homeCarouselList.length].title"
-                v-bind:active="i === this.selectedIndex"/>
+                    v-for="i in this.totalCount"
+                    :key="`${i}-${selectedIndex}-3`"
+                    :title="homeCarouselList[i % homeCarouselList.length].title"
+                    v-bind:active="i === this.selectedIndex"/>
         </div>
     </div>
     <CarouselIndicator
-        :selectedIndex="selectedIndex"
-        :indicatorCount="totalCount"
-        :setPrevIndex="prevItem"
-        :setNextIndex="nextItem"/>
+            :selectedIndex="selectedIndex"
+            :indicatorCount="totalCount"
+            :setPrevIndex="prevItem"
+            :setNextIndex="nextItem"/>
 </template>
 
 <script>
@@ -66,7 +66,9 @@ export default {
     };
   },
   mounted() {
+    this.$refs.carouselTrack.classList.add("no-transition");
     this.$refs.carouselTrack.scrollLeft = this.useWidth * this.totalCount + 30;
+    this.$refs.carouselTrack.classList.remove("no-transition");
     this.$refs.carouselTrack.addEventListener("scroll", this.infiniteScroll);
     this.$refs.carouselTrack.addEventListener("transitionend", () => {
       console.log("end");
@@ -86,6 +88,7 @@ export default {
       this.setSelectedIndexByScrollLeft(scrollLeft + 30);
     },
     nextItem() {
+      console.log(parseInt(this.$refs.carouselTrack.scrollLeft / this.useWidth));
       const scrollLeft =
         parseInt(this.$refs.carouselTrack.scrollLeft / this.useWidth) *
         this.useWidth +
@@ -128,6 +131,10 @@ export default {
       }
     },
     infiniteScroll() {
+      console.log('infinite')
+      console.log(this.$refs.carouselTrack.scrollLeft)
+      console.log(this.$refs.carouselTrack.scrollWidth -
+        this.$refs.carouselTrack.offsetWidth)
       if (this.$refs.carouselTrack.scrollLeft === 30) {
         this.$refs.carouselTrack.classList.add("no-transition");
         this.$refs.carouselTrack.scrollLeft =
@@ -139,10 +146,10 @@ export default {
       } else if (
         Math.ceil(this.$refs.carouselTrack.scrollLeft) ===
         this.$refs.carouselTrack.scrollWidth -
-        this.$refs.carouselTrack.offsetWidth
+        this.$refs.carouselTrack.offsetWidth - 30
       ) {
         this.$refs.carouselTrack.classList.add("no-transition");
-        this.$refs.carouselTrack.scrollLeft = this.useWidth * this.totalCount + 30;
+        this.$refs.carouselTrack.scrollLeft -= this.useWidth * this.totalCount;
         this.prevPageX -= this.useWidth * this.totalCount;
         this.$refs.carouselTrack.classList.remove("no-transition");
       }

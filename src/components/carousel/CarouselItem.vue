@@ -1,5 +1,5 @@
 <template>
-    <div ref="element" class="carousel-item" :class="{ active }">
+    <div class="carousel-item" :class="{ active }">
         <p class="title">{{ title }}</p>
     </div>
 </template>
@@ -30,7 +30,7 @@ export default {
     flex-shrink: 0;
     align-items: center;
     justify-content: center;
-    transition: height 0.3s;
+    transition: height 0.3s, font-size 0.3s, background-color 0.3s;
 
     &.active {
         @include Heading-28;
