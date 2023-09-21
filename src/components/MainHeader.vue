@@ -1,11 +1,11 @@
 <template>
-    <header v-if="!isLogo">
+    <header v-if="!isLogo" class="header">
         <button @click="back">
             <img src="/icons/ic_arrow_prev.svg" alt="back button">
         </button>
         <p>{{ title }}</p>
     </header>
-    <header v-if="isLogo">
+    <header v-if="isLogo" class="header header-logo">
         <p>COGIL</p>
     </header>
 </template>
@@ -33,19 +33,32 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss">
-header {
-  display: flex;
+<style scoped lang="scss">
+@import "styleGuide.scss";
+
+.header {
+    display: flex;
+    height: 52px;
+}
+
+.header-logo {
+    @include Heading-24;
+    justify-content: center;
+    align-items: center;
+}
+
+.header {
+    display: flex;
 }
 
 button {
-  background: none;
-  border: none;
-  cursor: pointer;
+    background: none;
+    border: none;
+    cursor: pointer;
 }
 
 img {
-  width: 24px;
-  height: 24px;
+    width: 24px;
+    height: 24px;
 }
 </style>

@@ -26,4 +26,14 @@ body {
     max-width: 390px;
     height: 100%;
 }
+
+button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+p, span, h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+}
 </style>
