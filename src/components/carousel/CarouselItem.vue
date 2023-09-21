@@ -14,22 +14,28 @@ export default {
 };
 </script>
 
-// scss
 <style lang="scss">
-.carousel-item {
-  flex-shrink: 0;
-  width: 200px;
-  height: 150px;
-  margin-right: 20px;
-  background-color: #eee;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: width 0.3s;
+@import "../styleGuide.scss";
 
-  &.active {
-    background-color: #ccc;
-    //width: 200px;
-  }
+.carousel-item {
+    @include Heading-20;
+    width: 120px;
+    height: 40px;
+    border-radius: 8px;
+    background-color: $grey100;;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.05);
+    margin: 0 15px;
+
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    transition: height 0.3s;
+
+    &.active {
+        @include Heading-28;
+        height: 60px;
+        background-color: $main200;
+    }
 }
 </style>

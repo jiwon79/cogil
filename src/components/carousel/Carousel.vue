@@ -11,10 +11,20 @@
     >
         <div class="carousel-track" ref="carouselTrack">
             <CarouselItem
-                v-for="i in this.totalCount * 3"
-                :key="`${i}-${selectedIndex}`"
-                :title="homeCarouselList[(i % this.totalCount)].title"
-                v-bind:active="(i % this.totalCount) === (this.selectedIndex % this.totalCount)"/>
+                v-for="i in this.totalCount"
+                :key="`${i}-${selectedIndex}-1`"
+                :title="homeCarouselList[i % homeCarouselList.length].title"
+                v-bind:active="i === this.selectedIndex"/>
+            <CarouselItem
+                v-for="i in this.totalCount"
+                :key="`${i}-${selectedIndex}-2`"
+                :title="homeCarouselList[i % homeCarouselList.length].title"
+                v-bind:active="i === this.selectedIndex"/>
+            <CarouselItem
+                v-for="i in this.totalCount"
+                :key="`${i}-${selectedIndex}-3`"
+                :title="homeCarouselList[i % homeCarouselList.length].title"
+                v-bind:active="i === this.selectedIndex"/>
         </div>
     </div>
     <CarouselIndicator
@@ -47,8 +57,8 @@ export default {
       isDragging: false,
       prevPageX: 0,
       prevScrollLeft: 0,
-      itemWidth: 200,
-      useWidth: 200 + 20,
+      itemWidth: 120,
+      useWidth: 120 + 30,
       positionDiff: 0,
       homeCarouselList,
       totalCount: homeCarouselList.length,
@@ -56,16 +66,13 @@ export default {
     };
   },
   mounted() {
-    this.$refs.carouselTrack.scrollLeft = this.useWidth * this.totalCount;
+    this.$refs.carouselTrack.scrollLeft = this.useWidth * this.totalCount + 30;
     this.$refs.carouselTrack.addEventListener("scroll", this.infiniteScroll);
     this.$refs.carouselTrack.addEventListener("transitionend", () => {
       console.log("end");
     });
   },
   methods: {
-    slide() {
-      this.$refs.carouselTrack.scrollLeft += 20;
-    },
     transitionEnd() {
       console.log("end");
       // this.isButtonSliding = false;
@@ -75,16 +82,16 @@ export default {
         parseInt(this.$refs.carouselTrack.scrollLeft / this.useWidth) *
         this.useWidth -
         this.useWidth;
-      this.$refs.carouselTrack.scrollLeft = scrollLeft;
-      this.setSelectedIndexByScrollLeft(scrollLeft);
+      this.$refs.carouselTrack.scrollLeft = scrollLeft + 30;
+      this.setSelectedIndexByScrollLeft(scrollLeft + 30);
     },
     nextItem() {
-      var temp =
+      const scrollLeft =
         parseInt(this.$refs.carouselTrack.scrollLeft / this.useWidth) *
         this.useWidth +
         this.useWidth;
-      this.$refs.carouselTrack.scrollLeft = temp;
-      this.setSelectedIndexByScrollLeft(temp);
+      this.$refs.carouselTrack.scrollLeft = scrollLeft + 30;
+      this.setSelectedIndexByScrollLeft(scrollLeft + 30);
     },
     startDrag(e) {
       this.isDragging = true;
@@ -93,6 +100,7 @@ export default {
     },
     onDrag(e) {
       if (!this.isDragging) return;
+      console.log(this.$refs.carouselTrack.scrollLeft);
       e.preventDefault();
       this.positionDiff = (e.pageX || e.touches[0].pageX) - this.prevPageX;
       this.$refs.carouselTrack.scrollLeft =
@@ -112,19 +120,19 @@ export default {
       ) {
         this.$refs.carouselTrack.scrollLeft =
           (parseInt(this.$refs.carouselTrack.scrollLeft / this.useWidth) + 1) *
-          this.useWidth;
+          this.useWidth + 30;
       } else {
         this.$refs.carouselTrack.scrollLeft =
           parseInt(this.$refs.carouselTrack.scrollLeft / this.useWidth) *
-          this.useWidth;
+          this.useWidth + 30;
       }
     },
     infiniteScroll() {
-      if (this.$refs.carouselTrack.scrollLeft === 0) {
+      if (this.$refs.carouselTrack.scrollLeft === 30) {
         this.$refs.carouselTrack.classList.add("no-transition");
         this.$refs.carouselTrack.scrollLeft =
           this.$refs.carouselTrack.scrollWidth -
-          2 * this.useWidth * this.totalCount;
+          2 * this.useWidth * this.totalCount + 30;
         this.prevPageX += this.useWidth * this.totalCount;
 
         this.$refs.carouselTrack.classList.remove("no-transition");
@@ -134,7 +142,7 @@ export default {
         this.$refs.carouselTrack.offsetWidth
       ) {
         this.$refs.carouselTrack.classList.add("no-transition");
-        this.$refs.carouselTrack.scrollLeft = this.useWidth * this.totalCount;
+        this.$refs.carouselTrack.scrollLeft = this.useWidth * this.totalCount + 30;
         this.prevPageX -= this.useWidth * this.totalCount;
         this.$refs.carouselTrack.classList.remove("no-transition");
       }
@@ -165,11 +173,14 @@ export default {
 }
 
 .carousel-track {
-    width: 660px;
+    width: 100%;
+    max-width: 390px;
     display: flex;
+    align-items: center;
     overflow: hidden;
     transition: transform 0.3s;
     scroll-behavior: smooth;
+    padding-left: -30px;
 }
 
 .carousel-track.no-transition {
