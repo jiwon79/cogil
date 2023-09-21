@@ -38,6 +38,12 @@ export default defineComponent({
 </script>
 
 <style scoped lang="scss">
+@import "src/components/styleGuide.scss";
+
+.home {
+    background-color: $grey200;
+
+}
 .carousel-container {
   display: flex;
   margin-top: 40px;
