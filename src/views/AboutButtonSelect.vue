@@ -11,8 +11,6 @@
 
 <script>
 
-import Document from './AboutDocument.vue';
-
 export default {
     components: {
         Document
@@ -22,15 +20,15 @@ export default {
             buttonList: ['게임 엔진', '수학/물리', '그래픽스', '인공지능'], // 버튼 텍스트 목록
             selectedButton: null, // 선택된 버튼의 인덱스
         };
-    },  
+    },
     methods: {
         changeText(index) {   // 버튼 index 저장
             this.selectedButton = index;
-        }, 
+        },
         openLink1() {
             window.open("", "_blank");
         },
-        openLink2() {   
+        openLink2() {
             window.open("", "_blank");
         },
         openLink3() {
@@ -48,7 +46,6 @@ export default {
     align-items: flex-start;
     gap: 4px;
     align-self: stretch;
-background: var(--grey-100, #FFF);
 }
 
 .custom-button {
@@ -60,7 +57,6 @@ background: var(--grey-100, #FFF);
     background: #FFFFFF;
     transition: background 0.1s ease;
     border: none; /* 테두리 제거 */
-    color: var(--grey-600, #73767B);
 
     /* Label/14 */
     font-family: Pretendard;
@@ -77,7 +73,6 @@ background: var(--grey-100, #FFF);
     align-items: center;
     gap: 10px;
     border-radius: 100px;
-    background: var(--main-150, #FFDFE1);    
     color: #E74A55;
 }
 
