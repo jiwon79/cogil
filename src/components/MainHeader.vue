@@ -39,6 +39,7 @@ export default defineComponent({
 
 .header {
     display: flex;
+    flex-shrink: 0;
     height: 52px;
     padding: 0 18px;
     justify-content: space-between;
