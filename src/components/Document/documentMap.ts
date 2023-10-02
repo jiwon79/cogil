@@ -1,5 +1,5 @@
 import { Component } from 'vue';
-import GameEngine from "./game/GameEngine.vue";
+import { GameEngine, GameMath } from "./content/game";
 
 interface Document {
   name: string;
@@ -26,7 +26,7 @@ const documentList: Document[] = [
       {
         name: 'game-math',
         title: '수학/물리',
-        content: GameEngine,
+        content: GameMath,
       },
       {
         name: 'game-graphics',

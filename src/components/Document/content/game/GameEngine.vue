@@ -1,0 +1,55 @@
+<template>
+    <Wrap>
+        <P>bbbb</P>
+        <Ul>
+            <Li>aaaa</Li>
+            <Li>bbbb</Li>
+            <Li>cccc</Li>
+            <Li>cccc</Li>
+            <Li>cccc</Li>
+            <Li>cccc</Li>
+            <Li>cccc</Li>
+            <Li>cccc</Li>
+            <Li>cccc</Li>
+            <Li>cccc</Li>
+            <Li>cccc</Li>
+        </Ul>
+        <P>bbbb</P>
+        <P>bbbb</P>
+        <P>bbbb</P>
+        <P>bbbb</P>
+        <P>bbbb</P>
+        <P>bbbb</P>
+        <P>bbbb</P>
+        <P>bbbb</P>
+        <P>bbbb</P>
+        <P>bbbb</P>
+        <P>bbbb</P>
+        <P>bbbb</P>
+        <P>bbbb</P>
+        <P>bbbb</P>
+        <P>bbbb</P>
+        <P>bbbb</P>
+        <P>bbbb</P>
+        <P>bbbb</P>
+        <P>bbbb</P>
+        <P>bbbb</P>
+        <P>bbbb</P>
+        <P>bbbb</P>
+        <P>bbbb</P>
+        <P>bbbb</P>
+        <P>bbbb</P>
+        <P>bbbb</P>
+        <P>bbbb</P>
+        <P>bbbb</P>
+        <P>bbbb</P>
+        <P>bbbb</P>
+        <P>bbbb</P>
+        <P>bbbb</P>
+v        <Youtube text="aa" link="https://google.com"/>
+    </Wrap>
+</template>
+
+<script setup lang="ts">
+import {Youtube, P, Wrap, Ul, Li} from "../../component";
+</script>
