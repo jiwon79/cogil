@@ -20,7 +20,7 @@ import CarouselPreview from "@/components/carousel/CarouselPreview.vue";
 export default defineComponent({
   name: "HomeView",
   components: {
-      CarouselPreview,
+    CarouselPreview,
     Carousel,
     MainHeader,
   },
@@ -46,27 +46,28 @@ export default defineComponent({
     background-color: $grey200;
     flex: 1;
 }
+
 .carousel-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 h3 {
-  margin: 40px 0 0;
+    margin: 40px 0 0;
 }
 
 ul {
-  list-style-type: none;
-  padding: 0;
+    list-style-type: none;
+    padding: 0;
 }
 
 li {
-  display: inline-block;
-  margin: 0 10px;
+    display: inline-block;
+    margin: 0 10px;
 }
 
 a {
-  color: #42b983;
+    color: #42b983;
 }
 </style>

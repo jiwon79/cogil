@@ -1,0 +1,56 @@
+<template>
+    <Wrap>
+        <Title>게임엔진</Title>
+        <P>bbbb</P>
+        <Ul>
+            <Li>aaaa</Li>
+            <Li>bbbb</Li>
+            <Li>cccc</Li>
+            <Li>cccc</Li>
+            <Li>cccc</Li>
+            <Li>cccc</Li>
+            <Li>cccc</Li>
+            <Li>cccc</Li>
+            <Li>cccc</Li>
+            <Li>cccc</Li>
+            <Li>cccc</Li>
+        </Ul>
+        <P>bbbb</P>
+        <P>bbbb</P>
+        <P>bbbb</P>
+        <P>bbbb</P>
+        <P>bbbb</P>
+        <P>bbbb</P>
+        <P>bbbb</P>
+        <P>bbbb</P>
+        <P>bbbb</P>
+        <P>bbbb</P>
+        <P>bbbb</P>
+        <P>bbbb</P>
+        <P>bbbb</P>
+        <P>bbbb</P>
+        <P>bbbb</P>
+        <P>bbbb</P>
+        <P>bbbb</P>
+        <P>bbbb</P>
+        <P>bbbb</P>
+        <P>bbbb</P>
+        <P>bbbb</P>
+        <P>bbbb</P>
+        <P>bbbb</P>
+        <P>bbbb</P>
+        <P>bbbb</P>
+        <P>bbbb</P>
+        <P>bbbb</P>
+        <P>bbbb</P>
+        <P>bbbb</P>
+        <P>bbbb</P>
+        <P>bbbb</P>
+        <P>bbbb</P>
+v        <Youtube text="aa" link="https://google.com"/>
+    </Wrap>
+</template>
+
+<script setup lang="ts">
+import {Youtube, Title, P, Wrap, Ul, Li} from "../../component";
+</script>

@@ -1,37 +1,37 @@
 <template>
     <div
-            class="carousel"
-            @mousedown="startDrag"
-            @touchstart="startDrag"
-            @mousemove="onDrag"
-            @touchmove="onDrag"
-            @mouseup="stopDrag"
-            @mouseleave="stopDrag"
-            @touchend="stopDrag"
+        class="carousel"
+        @mousedown="startDrag"
+        @touchstart="startDrag"
+        @mousemove="onDrag"
+        @touchmove="onDrag"
+        @mouseup="stopDrag"
+        @mouseleave="stopDrag"
+        @touchend="stopDrag"
     >
         <div class="carousel-track" ref="carouselTrack">
             <CarouselItem
-                    v-for="i in this.totalCount"
-                    :key="`${i}-${selectedIndex}-1`"
-                    :title="homeCarouselList[i % homeCarouselList.length].title"
-                    v-bind:active="i === this.selectedIndex"/>
+                v-for="i in this.totalCount"
+                :key="`${i}-${selectedIndex}-1`"
+                :title="homeCarouselList[i % homeCarouselList.length].title"
+                v-bind:active="i === this.selectedIndex"/>
             <CarouselItem
-                    v-for="i in this.totalCount"
-                    :key="`${i}-${selectedIndex}-2`"
-                    :title="homeCarouselList[i % homeCarouselList.length].title"
-                    v-bind:active="i === this.selectedIndex"/>
+                v-for="i in this.totalCount"
+                :key="`${i}-${selectedIndex}-2`"
+                :title="homeCarouselList[i % homeCarouselList.length].title"
+                v-bind:active="i === this.selectedIndex"/>
             <CarouselItem
-                    v-for="i in this.totalCount"
-                    :key="`${i}-${selectedIndex}-3`"
-                    :title="homeCarouselList[i % homeCarouselList.length].title"
-                    v-bind:active="i === this.selectedIndex"/>
+                v-for="i in this.totalCount"
+                :key="`${i}-${selectedIndex}-3`"
+                :title="homeCarouselList[i % homeCarouselList.length].title"
+                v-bind:active="i === this.selectedIndex"/>
         </div>
     </div>
     <CarouselIndicator
-            :selectedIndex="selectedIndex"
-            :indicatorCount="totalCount"
-            :setPrevIndex="prevItem"
-            :setNextIndex="nextItem"/>
+        :selectedIndex="selectedIndex"
+        :indicatorCount="totalCount"
+        :setPrevIndex="prevItem"
+        :setNextIndex="nextItem"/>
 </template>
 
 <script>
