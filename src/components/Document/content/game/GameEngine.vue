@@ -47,7 +47,7 @@
         <P>bbbb</P>
         <P>bbbb</P>
         <P>bbbb</P>
-v        <Youtube text="aa" link="https://google.com"/>
+        <Youtube text="aa" link="https://google.com"/>
     </Wrap>
 </template>
 
