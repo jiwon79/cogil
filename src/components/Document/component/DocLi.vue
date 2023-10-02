@@ -6,8 +6,11 @@
 
 <style scoped lang="scss">
 
+@import "@/components/styleGuide.scss";
+
 li {
-    color: blue;
+    @include Paragraph-14;
+    color: $grey800;
 }
 
 </style>

@@ -1,5 +1,6 @@
 <template>
     <Wrap>
+        <Title>게임엔진</Title>
         <P>bbbb</P>
         <Ul>
             <Li>aaaa</Li>
@@ -51,5 +52,5 @@ v        <Youtube text="aa" link="https://google.com"/>
 </template>
 
 <script setup lang="ts">
-import {Youtube, P, Wrap, Ul, Li} from "../../component";
+import {Youtube, Title, P, Wrap, Ul, Li} from "../../component";
 </script>
