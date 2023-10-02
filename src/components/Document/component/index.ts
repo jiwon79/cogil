@@ -8,4 +8,6 @@ import DocUl from "./DocUl.vue";
 export { DocUl as Ul };
 import DocLi from "./DocLi.vue";
 export { DocLi as Li };
+import DocTitle from "./DocTitle.vue";
+export { DocTitle as Title };
 
