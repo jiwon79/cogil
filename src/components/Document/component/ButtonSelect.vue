@@ -28,6 +28,7 @@ const props = defineProps<{
 
 .button-wrap {
     display: flex;
+    flex-shrink: 0;
     padding: 12px 16px;
     gap: 4px;
     background-color: $grey100;
